@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurélien | Étudiant BUT Informatique</title>
+    <meta name="description" content="Portfolio d'Aurélien Autord--Romero - Étudiant en BUT Informatique à l'IUT d'Orsay.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#38bdf8', // Sky blue
+                            secondary: '#818cf8', // Indigo
+                            terminal: '#22c55e', // Matrix Green
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Modal Styles */
+        .modal-open {
+            overflow: hidden;
+        }
+        #project-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Syntax Highlighting Fake */
+        .token-keyword { color: #c084fc; }
+        .token-string { color: #4ade80; }
+        .token-func { color: #38bdf8; }
+        .token-comment { color: #64748b; font-style: italic; }
+
+        /* Terminal Styles */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #22c55e;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+    </style>
+</head>
+<body class="bg-tech-bg text-slate-300 font-sans selection:bg-tech-accent selection:text-tech-bg overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-panel border-b border-slate-800" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-mono text-xl font-bold text-tech-accent">
+                    &lt;Aurélien /&gt;
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-tech-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
+                        <a href="#about" class="hover:text-tech-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">À Propos</a>
+                        <a href="#stack" class="hover:text-tech-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Compétences</a>
+                        <a href="#projects" class="hover:text-tech-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Projets</a>
+                        <a href="#contact" class="px-4 py-2 rounded border border-tech-accent text-tech-accent hover:bg-tech-accent hover:text-tech-bg transition-all text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-slate-800 border-b border-slate-700" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="#about" class="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">À Propos</a>
+                <a href="#stack" class="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stack</a>
+                <a href="#projects" class="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projets</a>
+                <a href="#contact" class="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Terminal Style) -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="space-y-6">
+                <p class="font-mono text-tech-accent">Salut, mon nom est</p>
+                <h1 class="text-5xl md:text-7xl font-bold text-slate-100 tracking-tight">Aurélien.</h1>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-400">Étudiant en BUT Informatique.</h2>
+                <p class="mt-4 max-w-lg text-lg text-slate-400">
+                    Actuellement en formation à l'IUT d'Orsay. Je me spécialise dans le développement logiciel (Java) et le développement web back-end (PHP).
+                </p>
+                <div class="pt-4 flex gap-4">
+                    <a href="#projects" class="bg-tech-accent text-tech-bg font-bold py-3 px-6 rounded hover:bg-cyan-300 transition-colors">
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" class="border border-slate-600 text-slate-300 font-bold py-3 px-6 rounded hover:border-slate-400 hover:text-white transition-colors">
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+
+            <!-- Fake IDE Window (EASTER EGG TRIGGER) -->
+            <div class="hidden lg:block relative group cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openTerminal()" title="Cliquez pour ouvrir le terminal">
+                <div class="absolute -inset-1 bg-gradient-to-r from-tech-accent to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative rounded-lg bg-[#1e1e1e] border border-slate-700 shadow-2xl overflow-hidden font-mono text-sm leading-relaxed">
+                    <!-- Window Controls -->
+                    <div class="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-slate-700">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="ml-4 text-xs text-slate-400">etudiant.java (Click Me!)</div>
+                    </div>
+                    <!-- Code Content -->
+                    <div class="p-6 overflow-x-auto">
+                        <div class="flex">
+                            <div class="text-slate-600 select-none text-right pr-4 border-r border-slate-700 mr-4">
+                                1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9
+                            </div>
+                            <div>
+                                <span class="token-keyword">public class</span> <span class="text-yellow-300">Etudiant</span> {<br>
+                                &nbsp;&nbsp;<span class="token-keyword">String</span> nom = <span class="token-string">"Aurélien"</span>;<br>
+                                &nbsp;&nbsp;<span class="token-keyword">String</span> ecole = <span class="token-string">"IUT Orsay"</span>;<br>
+                                &nbsp;&nbsp;<span class="token-keyword">String</span>[] skills = {<span class="token-string">"Java"</span>, <span class="token-string">"PHP"</span>, <span class="token-string">"Python"</span>};<br>
+                                <br>
+                                &nbsp;&nbsp;<span class="token-keyword">public void</span> <span class="token-func">coder</span>() {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="token-string">"Hello World!"</span>);<br>
+                                &nbsp;&nbsp;}<br>
+                                }<br>
+                                <span class="token-comment">// Compilation en cours...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-tech-accent font-mono text-xl">01.</span>
+                <h2 class="text-3xl font-bold text-slate-100">À propos de moi</h2>
+                <div class="h-px bg-slate-700 flex-grow max-w-xs"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="md:col-span-2 text-slate-400 text-lg leading-relaxed space-y-4">
+                    <p>
+                        Bonjour ! Je suis Aurélien Autord--Romero, étudiant passionné d'informatique. Mon parcours à l'<strong>IUT d'Orsay</strong> m'a permis d'acquérir des bases solides en algorithmique et en développement.
+                    </p>
+                    <p>
+                        Contrairement aux stacks "tout JavaScript" très à la mode, je me concentre sur des technologies robustes et éprouvées comme <strong>Java</strong> pour le logiciel et <strong>PHP</strong> pour le web dynamique. J'aime comprendre la structure des données et la logique objet.
+                    </p>
+                    <p>
+                        Quand je ne suis pas en train de réviser mes cours ou de coder un projet pour l'IUT, je m'intéresse au hardware et aux nouvelles technologies.
+                    </p>
+                </div>
+                <!-- Profile Image / Tech visual -->
+                <div class="relative group mx-auto md:mx-0 w-64 h-64">
+                    <div class="absolute inset-0 border-2 border-tech-accent rounded translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                    <div class="relative w-full h-full rounded bg-slate-700 overflow-hidden grayscale hover:grayscale-0 transition-all duration-300">
+                        <!-- Placeholder Image (Replace with yours) -->
+                        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Setup Bureau" class="object-cover w-full h-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills / Stack -->
+    <section id="stack" class="py-20 bg-tech-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-100 mb-4"><span class="text-tech-accent font-mono">02.</span> Mes Compétences</h2>
+                <p class="text-slate-400">Les technologies que je maîtrise dans le cadre de mon BUT.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill Cards -->
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fab fa-java text-4xl text-red-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">Java</h3>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fab fa-php text-4xl text-purple-400 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">PHP</h3>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fas fa-database text-4xl text-yellow-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">SQL / MySQL</h3>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fab fa-html5 text-4xl text-orange-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">HTML5 & CSS3</h3>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fab fa-git-alt text-4xl text-orange-600 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">Git & GitHub</h3>
+                </div>
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fas fa-terminal text-4xl text-gray-400 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">Linux / Bash</h3>
+                </div>
+                <!-- Python -->
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fab fa-python text-4xl text-blue-500 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">Python</h3>
+                </div>
+                <!-- C++ (New) -->
+                <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
+                    <i class="fas fa-microchip text-4xl text-blue-600 mb-3 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-bold text-slate-200">C++</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-tech-accent font-mono text-xl">03.</span>
+                <h2 class="text-3xl font-bold text-slate-100">Mes Projets</h2>
+                <div class="h-px bg-slate-700 flex-grow max-w-xs"></div>
+            </div>
+
+            <!-- Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                
+                <!-- Project 1: SAE Web -->
+                <div onclick="openModal('sae_web')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-purple-900 to-slate-800 flex items-center justify-center">
+                            <i class="fab fa-php text-5xl text-slate-400 group-hover:text-purple-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Projet SAE Web</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Développement d'un site web dynamique en PHP/MySQL (Projet IUT).
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>PHP</li>
+                            <li>MySQL</li>
+                            <li>HTML/CSS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 2: SAE Java -->
+                <div onclick="openModal('sae_java')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                         <div class="w-full h-full bg-gradient-to-br from-red-900 to-slate-800 flex items-center justify-center">
+                            <i class="fab fa-java text-5xl text-slate-400 group-hover:text-red-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Projet SAE Java</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Développement d'une application logicielle en Java (Projet IUT).
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>Java</li>
+                            <li>Swing</li>
+                            <li>Algo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 3: SAE BDD -->
+                <div onclick="openModal('sae_bdd')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-slate-700 to-slate-600 flex items-center justify-center">
+                            <i class="fas fa-database text-5xl text-slate-500 group-hover:text-tech-accent transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Projet SAE BDD</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Analyse et conception d'une base de données relationnelle.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>SQL</li>
+                            <li>Merise</li>
+                            <li>UML</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 4: Puissance 4 (Hidden initially) -->
+                <div onclick="openModal('puissance4')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-yellow-900 to-slate-800 flex items-center justify-center">
+                            <i class="fas fa-circle text-5xl text-slate-400 group-hover:text-yellow-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Puissance 4</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Développement d’un jeu Puissance 4 en Python, avec gestion des règles et interface graphique.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>Python</li>
+                            <li>Tkinter</li>
+                            <li>Logique</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 5: Jeu de la vie (Hidden initially) -->
+                <div onclick="openModal('jeu_vie')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-green-900 to-slate-800 flex items-center justify-center">
+                            <i class="fas fa-dna text-5xl text-slate-400 group-hover:text-green-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Jeu de la vie</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Développement du Jeu de la vie en Python, avec gestion des règles et interface graphique.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>Python</li>
+                            <li>Simulation</li>
+                            <li>GUI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 6: Jeu vidéo Unity (Hidden initially) -->
+                <div onclick="openModal('unity_game')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-blue-900 to-slate-800 flex items-center justify-center">
+                            <i class="fab fa-unity text-5xl text-slate-400 group-hover:text-blue-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Jeu vidéo Unity</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Projet de création d’un jeu vidéo avec Unity, codage des actions personnalisées.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>Unity</li>
+                            <li>C#</li>
+                            <li>Game Dev</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Voir tous les projets Button -->
+            <div class="mt-12 text-center" id="see-more-container">
+                <button onclick="showAllProjects()" class="inline-block py-3 px-8 rounded border border-tech-accent text-tech-accent hover:bg-tech-accent hover:text-tech-bg transition-all font-mono font-bold">
+                    Voir tous les projets
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Container -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-slate-900 bg-opacity-90 transition-opacity" onclick="closeModal()"></div>
+
+        <!-- Modal Panel -->
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-tech-card border border-slate-700 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
+                <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
+                            <h3 class="text-2xl font-semibold leading-6 text-slate-100 mb-4 font-mono" id="modal-title">Titre du Projet</h3>
+                            <div class="mt-2">
+                                <div class="text-sm text-slate-300 space-y-4" id="modal-content">
+                                    <!-- Dynamic Content injected here -->
+                                </div>
+                                <div class="mt-6 border-t border-slate-700 pt-4">
+                                    <h4 class="text-sm font-bold text-tech-accent mb-2">Technologies utilisées :</h4>
+                                    <div class="flex flex-wrap gap-2" id="modal-tags">
+                                        <!-- Tags injected here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-700">
+                    <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-slate-300 shadow-sm ring-1 ring-inset ring-slate-600 hover:bg-slate-700 sm:mt-0 sm:w-auto transition-colors" onclick="closeModal()">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-tech-bg">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-tech-accent font-mono text-lg mb-4 block">04. Et maintenant ?</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-100 mb-6">Restons en contact</h2>
+            <p class="text-slate-400 text-lg mb-10">
+                À la recherche d'un stage ou d'une alternance ? N'hésitez pas à me contacter pour discuter de mes projets ou de mon parcours.
+            </p>
+            
+            <a href="mailto:aautordromero@gmail.com" class="inline-block bg-transparent border-2 border-tech-accent text-tech-accent font-bold py-4 px-8 rounded hover:bg-tech-accent hover:text-tech-bg transition-all duration-300">
+                Me contacter par Email
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-6 text-center text-slate-500 text-sm font-mono">
+        <p>Designé & Développé par Aurélien.</p>
+        <p class="mt-2 text-xs opacity-70">© 2024 - Tous droits réservés.</p>
+    </footer>
+
+    <!-- EASTER EGG TERMINAL -->
+    <div id="terminal-overlay" class="hidden fixed inset-0 z-[100] bg-black/95 text-green-500 font-mono text-lg p-4 md:p-8 overflow-hidden flex-col">
+        <div class="flex justify-between items-center mb-4 border-b border-green-800 pb-2">
+            <span class="text-sm text-green-700">aurelien@portfolio:~</span>
+            <button onclick="closeTerminal()" class="text-green-500 hover:text-white">[X] Fermer</button>
+        </div>
+        <div id="terminal-output" class="flex-1 overflow-y-auto mb-4 space-y-2">
+            <!-- Output will go here -->
+        </div>
+        
+        <!-- NEW INPUT STRUCTURE FOR CURSOR FOLLOWING -->
+        <div class="flex items-center flex-wrap" onclick="document.getElementById('terminal-input').focus()">
+            <span id="active-prompt" class="mr-2 text-green-400 shrink-0">user@portfolio:~$</span>
+            <div class="relative flex items-center">
+                <span id="terminal-mirror" class="text-green-400 whitespace-pre"></span>
+                <span class="terminal-cursor"></span>
+                <!-- Hidden input, tiny size but captures focus and typing -->
+                <input type="text" id="terminal-input" class="absolute opacity-0 w-px h-px overflow-hidden" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Data for Projects
+        const projectsData = {
+            'sae_web': {
+                title: "SAE Web : Site Dynamique PHP",
+                description: `
+                    <p class="mb-2"><strong>(Copie ici le texte de ton projet Web depuis ton ancien portfolio)</strong></p>
+                    <p class="mb-2">Exemple : Création d'un site web de gestion avec PHP 8 et MySQL. Mise en place d'une architecture MVC, gestion des sessions utilisateurs et sécurité des formulaires.</p>
+                `,
+                tags: ["PHP", "MySQL", "HTML/CSS", "MVC"]
+            },
+            'sae_java': {
+                title: "SAE Java : Application Logicielle",
+                description: `
+                    <p class="mb-2"><strong>(Copie ici le texte de ton projet Java)</strong></p>
+                    <p class="mb-2">Exemple : Développement d'une application de gestion de stock en Java. Utilisation de la programmation orientée objet (héritage, polymorphisme) et création d'une interface graphique avec Swing.</p>
+                `,
+                tags: ["Java", "Swing", "POO", "Algorithmique"]
+            },
+            'sae_bdd': {
+                title: "SAE Base de Données",
+                description: `
+                    <p class="mb-2"><strong>(Copie ici le texte de ton projet BDD ou autre)</strong></p>
+                    <p class="mb-2">Exemple : Analyse des besoins, création du modèle conceptuel de données (MCD) et implémentation SQL pour une entreprise fictive.</p>
+                `,
+                tags: ["SQL", "Merise", "Modélisation"]
+            },
+            'puissance4': {
+                title: "Puissance 4 en Python",
+                description: `
+                    <p class="mb-2">Développement d’un jeu Puissance 4 complet en Python.</p>
+                    <p class="mb-2">Ce projet inclut la gestion complète des règles du jeu (vérification des alignements, gestion du tour par tour, détection de la victoire ou du match nul).</p>
+                    <p class="mb-2">Une interface graphique (GUI) a été développée pour permettre aux joueurs d'interagir facilement avec le jeu plutôt que de jouer via la console.</p>
+                `,
+                tags: ["Python", "Tkinter", "Logique de Jeu"]
+            },
+            'jeu_vie': {
+                title: "Jeu de la vie en Python",
+                description: `
+                    <p class="mb-2">Développement du célèbre automate cellulaire "Le Jeu de la vie" (Game of Life) de Conway en Python.</p>
+                    <p class="mb-2">Implémentation des règles d'évolution des cellules (naissance, survie, mort). Le projet comprend une interface graphique permettant de visualiser l'évolution de la population de cellules génération après génération.</p>
+                `,
+                tags: ["Python", "Simulation", "Algorithmique"]
+            },
+            'unity_game': {
+                title: "Jeu vidéo Unity",
+                description: `
+                    <p class="mb-2">Projet de création d’un jeu vidéo 2D/3D utilisant le moteur Unity.</p>
+                    <p class="mb-2">Programmation en C# des scripts comportementaux pour les actions personnalisées du personnage :</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li>Système de déplacement fluide.</li>
+                        <li>Mécanique de saut avec gestion de la physique.</li>
+                        <li>Fonctionnalité "Recommencer" pour gérer le Game Over.</li>
+                    </ul>
+                `,
+                tags: ["Unity", "C#", "Game Design", "Physique"]
+            }
+        };
+
+        // Logic to show all projects
+        function showAllProjects() {
+            const hiddenProjects = document.querySelectorAll('.project-more');
+            hiddenProjects.forEach(project => {
+                project.classList.remove('hidden');
+                project.classList.add('flex');
+            });
+            const btnContainer = document.getElementById('see-more-container');
+            btnContainer.style.display = 'none';
+        }
+
+        // Modal Logic
+        function openModal(projectId) {
+            const modal = document.getElementById('project-modal');
+            const data = projectsData[projectId];
+            
+            if (data) {
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-content').innerHTML = data.description;
+                
+                const tagsContainer = document.getElementById('modal-tags');
+                tagsContainer.innerHTML = '';
+                data.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'text-xs font-mono bg-slate-700 text-tech-accent px-2 py-1 rounded border border-slate-600';
+                    span.textContent = tag;
+                    tagsContainer.appendChild(span);
+                });
+
+                modal.classList.remove('hidden');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        // --- TERMINAL EASTER EGG LOGIC ---
+        
+        // File System Simulation
+        const fileSystem = {
+            '~': {
+                type: 'dir',
+                children: {
+                    'about.txt': { type: 'file', content: "Bonjour ! Je suis Aurélien Autord--Romero.\nÉtudiant passionné en BUT Informatique à l'IUT d'Orsay.\nJ'aime le Java, le PHP et comprendre comment les choses fonctionnent." },
+                    'contact.txt': { type: 'file', content: "Email: aautordromero@gmail.com\nN'hésitez pas à me contacter !" },
+                    'competences': {
+                        type: 'dir',
+                        children: {
+                            'java.txt': { type: 'file', content: "Maitrise : Avancé\n- POO, Swing, Algorithmique" },
+                            'php.txt': { type: 'file', content: "Maitrise : Intermédiaire\n- Web Dynamique, MVC, MySQL" },
+                            'python.txt': { type: 'file', content: "Maitrise : Intermédiaire\n- Scripts, Tkinter, Data" },
+                            'cpp.txt': { type: 'file', content: "Maitrise : Débutant/Intermédiaire\n- Programmation système" },
+                            'linux.txt': { type: 'file', content: "Environnement : Bash, Scripting" }
+                        }
+                    },
+                    'projets': {
+                        type: 'dir',
+                        children: {
+                            'sae_web.txt': { type: 'file', content: "Site Web Dynamique en PHP/MySQL." },
+                            'sae_java.txt': { type: 'file', content: "Application Logicielle en Java." },
+                            'puissance4.txt': { type: 'file', content: "Jeu Puissance 4 en Python avec GUI." },
+                            'jeu_vie.txt': { type: 'file', content: "Simulation Jeu de la Vie en Python." },
+                            'unity.txt': { type: 'file', content: "Jeu vidéo développé sous Unity (C#)." }
+                        }
+                    }
+                }
+            }
+        };
+
+        let currentPath = ['~'];
+        let currentDir = fileSystem['~'];
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        function openTerminal() {
+            const term = document.getElementById('terminal-overlay');
+            const input = document.getElementById('terminal-input');
+            const output = document.getElementById('terminal-output');
+            
+            // Clear previous session content
+            output.innerHTML = "";
+
+            term.classList.remove('hidden');
+            term.classList.add('flex');
+            input.focus();
+            
+            // Always show welcome message on open
+            print("Bienvenue dans le terminal du portfolio");
+            print("faire help pour connaitre les fonctionnalites");
+            print("---------------------------------------------------------");
+
+            term.addEventListener('click', () => input.focus());
+        }
+
+        function closeTerminal() {
+            const term = document.getElementById('terminal-overlay');
+            term.classList.add('hidden');
+            term.classList.remove('flex');
+        }
+
+        function print(text, isCommand = false) {
+            const output = document.getElementById('terminal-output');
+            const line = document.createElement('div');
+            if(isCommand) {
+                line.innerHTML = `<span class="text-green-400">user@portfolio:${getCurrentPathString()}$</span> ${text}`;
+            } else {
+                line.innerText = text; 
+                line.className = "text-slate-300 whitespace-pre-wrap";
+            }
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function getCurrentPathString() {
+            if(currentPath.length === 1) return "~";
+            return "~/" + currentPath.slice(1).join("/");
+        }
+
+        function updatePrompt() {
+            const promptEl = document.getElementById('active-prompt');
+            promptEl.innerText = `user@portfolio:${getCurrentPathString()}$`;
+        }
+
+        const termInput = document.getElementById('terminal-input');
+        const termMirror = document.getElementById('terminal-mirror');
+
+        termInput.addEventListener('input', function() {
+            termMirror.textContent = this.value;
+        });
+
+        termInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim();
+                print(command, true);
+                
+                if (command) {
+                    commandHistory.push(command);
+                    historyIndex = -1;
+                }
+
+                this.value = '';
+                termMirror.textContent = '';
+                processCommand(command);
+            }
+            else if (e.key === 'Tab') {
+                e.preventDefault();
+                handleAutocomplete(this.value);
+            }
+            else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                navigateHistory('up');
+            }
+            else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                navigateHistory('down');
+            }
+        });
+
+        function navigateHistory(direction) {
+            if (commandHistory.length === 0) return;
+
+            if (direction === 'up') {
+                if (historyIndex === -1) {
+                    historyIndex = commandHistory.length - 1;
+                } else if (historyIndex > 0) {
+                    historyIndex--;
+                }
+            } else if (direction === 'down') {
+                if (historyIndex !== -1 && historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                } else {
+                    historyIndex = -1;
+                }
+            }
+
+            const newValue = historyIndex === -1 ? '' : commandHistory[historyIndex];
+            termInput.value = newValue;
+            termMirror.textContent = newValue;
+        }
+
+        function handleAutocomplete(inputVal) {
+            const parts = inputVal.split(' ');
+            const currentInput = parts[parts.length - 1];
+            
+            if (!currentInput) return;
+
+            const matches = Object.keys(currentDir.children).filter(name => name.startsWith(currentInput));
+
+            if (matches.length === 1) {
+                const match = matches[0];
+                const isDir = currentDir.children[match].type === 'dir';
+                const suffix = isDir ? '/' : '';
+                parts[parts.length - 1] = match + suffix;
+                const newValue = parts.join(' ');
+                termInput.value = newValue;
+                termMirror.textContent = newValue;
+            }
+        }
+
+        // Helper to resolve complex paths (../, ~/, ./, etc.)
+        function resolvePath(pathStr) {
+            let startStack = [...currentPath];
+            let parts = pathStr.split('/');
+            
+            // Handle root start
+            if (pathStr.startsWith('~/')) {
+                startStack = ['~'];
+                parts = pathStr.slice(2).split('/');
+            } else if (pathStr === '~') {
+                return { node: fileSystem['~'], stack: ['~'] };
+            } else if (pathStr.startsWith('/')) {
+                startStack = ['~'];
+                parts = pathStr.slice(1).split('/');
+            }
+
+            let tempStack = [...startStack];
+
+            for (let part of parts) {
+                if (part === '' || part === '.') continue;
+                if (part === '..') {
+                    if (tempStack.length > 1) tempStack.pop();
+                } else {
+                    tempStack.push(part);
+                }
+            }
+
+            // Traverse
+            let curr = fileSystem['~'];
+            // i starts at 1 because index 0 is '~' which we already have in curr
+            for (let i = 1; i < tempStack.length; i++) {
+                const component = tempStack[i];
+                if (curr.children && curr.children[component]) {
+                    curr = curr.children[component];
+                } else {
+                    return null; // Not found
+                }
+            }
+            
+            return { node: curr, stack: tempStack };
+        }
+
+        function processCommand(cmdStr) {
+            const parts = cmdStr.split(' ');
+            const cmd = parts[0].toLowerCase();
+            const arg = parts[1];
+
+            switch(cmd) {
+                case 'help':
+                    print("Commandes disponibles :");
+                    print("  ls          : Lister les fichiers et dossiers");
+                    print("  cd [dossier]: Changer de dossier (.. pour retour)");
+                    print("  cat [fichier]: Lire le contenu d'un fichier");
+                    print("  clear       : Effacer l'écran");
+                    print("  exit        : Fermer le terminal");
+                    break;
+                
+                case 'ls':
+                    // We need to list content of current directory or arg directory if provided
+                    // For now simplicity: ls only current directory
+                    // If user provides arg "ls projects/", we could implement that, but keeping it simple as per request context
+                    let targetNodeForLs = currentDir;
+                    if (arg) {
+                        const res = resolvePath(arg);
+                        if(res && res.node.type === 'dir') targetNodeForLs = res.node;
+                        else if (res) { print(`ls: ${arg}: Pas un dossier`); return; }
+                        else { print(`ls: ${arg}: Dossier introuvable`); return; }
+                    }
+
+                    let contents = Object.keys(targetNodeForLs.children).map(name => {
+                        return targetNodeForLs.children[name].type === 'dir' ? name + '/' : name;
+                    });
+                    print(contents.join('  '));
+                    break;
+
+                case 'cd':
+                    if (!arg) {
+                        // Reset to root
+                        currentDir = fileSystem['~'];
+                        currentPath = ['~'];
+                        updatePrompt();
+                        return;
+                    }
+                    
+                    const resCd = resolvePath(arg);
+                    if (resCd && resCd.node.type === 'dir') {
+                        currentDir = resCd.node;
+                        currentPath = resCd.stack;
+                        updatePrompt();
+                    } else if (resCd) {
+                        print(`cd: ${arg}: Pas un dossier`);
+                    } else {
+                        print(`cd: ${arg}: Dossier introuvable`);
+                    }
+                    break;
+
+                case 'cat':
+                    if (!arg) {
+                        print("Usage: cat [nom_fichier]");
+                        return;
+                    }
+                    
+                    const resCat = resolvePath(arg);
+                    if (resCat && resCat.node.type === 'file') {
+                        print(resCat.node.content);
+                    } else if (resCat) {
+                        print(`cat: ${arg}: Est un dossier`);
+                    } else {
+                        print(`cat: ${arg}: Fichier introuvable`);
+                    }
+                    break;
+
+                case 'clear':
+                    document.getElementById('terminal-output').innerHTML = "";
+                    break;
+
+                case 'exit':
+                    closeTerminal();
+                    break;
+                
+                case '':
+                    break;
+
+                default:
+                    print(`Commande introuvable: ${cmd}`);
+            }
+        }
+
+        // Standard Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+                closeTerminal();
+            }
+        });
+
+        // Smooth reveal on scroll (Existing Logic)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+
+        // Navbar hide/show
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                navbar.classList.remove('-translate-y-full');
+                navbar.classList.add('shadow-none');
+            } else if (currentScroll > lastScroll && !navbar.classList.contains('mobile-open')) {
+                navbar.classList.add('-translate-y-full');
+            } else {
+                navbar.classList.remove('-translate-y-full');
+                navbar.classList.add('shadow-lg');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
