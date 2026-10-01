@@ -29,9 +29,9 @@
                         tech: {
                             bg: '#0f172a',
                             card: '#1e293b',
-                            accent: '#38bdf8', // Sky blue
-                            secondary: '#818cf8', // Indigo
-                            terminal: '#22c55e', // Matrix Green
+                            accent: '#38bdf8',
+                            secondary: '#818cf8',
+                            terminal: '#22c55e',
                         }
                     },
                     animation: {
@@ -141,9 +141,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Terminal Style) -->
+    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-        <!-- Background Effects -->
         <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
@@ -167,18 +166,16 @@
                 </div>
             </div>
 
-            <!-- Fake IDE Window (EASTER EGG TRIGGER) -->
+            <!-- Fake IDE Window -->
             <div class="hidden lg:block relative group cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openTerminal()" title="Cliquez pour ouvrir le terminal">
                 <div class="absolute -inset-1 bg-gradient-to-r from-tech-accent to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                 <div class="relative rounded-lg bg-[#1e1e1e] border border-slate-700 shadow-2xl overflow-hidden font-mono text-sm leading-relaxed">
-                    <!-- Window Controls -->
                     <div class="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-slate-700">
                         <div class="w-3 h-3 rounded-full bg-red-500"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500"></div>
                         <div class="ml-4 text-xs text-slate-400">etudiant.java (Click Me!)</div>
                     </div>
-                    <!-- Code Content -->
                     <div class="p-6 overflow-x-auto">
                         <div class="flex">
                             <div class="text-slate-600 select-none text-right pr-4 border-r border-slate-700 mr-4">
@@ -218,17 +215,15 @@
                         Bonjour ! Je suis Aurélien Autord--Romero, étudiant passionné d'informatique. Mon parcours à l'<strong>IUT d'Orsay</strong> m'a permis d'acquérir des bases solides en algorithmique et en développement.
                     </p>
                     <p>
-                        Contrairement aux stacks "tout JavaScript" très à la mode, je me concentre sur des technologies robustes et éprouvées comme <strong>Java</strong> pour le logiciel et <strong>PHP</strong> pour le web dynamique. J'aime comprendre la structure des données et la logique objet.
+                        Contrairement aux stacks « tout JavaScript » très à la mode, je me concentre sur des technologies robustes et éprouvées comme <strong>Java</strong> pour le logiciel et <strong>PHP</strong> pour le web dynamique. J'aime comprendre la structure des données et la logique objet.
                     </p>
                     <p>
                         Quand je ne suis pas en train de réviser mes cours ou de coder un projet pour l'IUT, je m'intéresse au hardware et aux nouvelles technologies.
                     </p>
                 </div>
-                <!-- Profile Image / Tech visual -->
                 <div class="relative group mx-auto md:mx-0 w-64 h-64">
                     <div class="absolute inset-0 border-2 border-tech-accent rounded translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
                     <div class="relative w-full h-full rounded bg-slate-700 overflow-hidden grayscale hover:grayscale-0 transition-all duration-300">
-                        <!-- Placeholder Image (Replace with yours) -->
                         <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Setup Bureau" class="object-cover w-full h-full">
                     </div>
                 </div>
@@ -245,7 +240,6 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Skill Cards -->
                 <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
                     <i class="fab fa-java text-4xl text-red-500 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h3 class="font-bold text-slate-200">Java</h3>
@@ -270,12 +264,10 @@
                     <i class="fas fa-terminal text-4xl text-gray-400 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h3 class="font-bold text-slate-200">Linux / Bash</h3>
                 </div>
-                <!-- Python -->
                 <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
                     <i class="fab fa-python text-4xl text-blue-500 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h3 class="font-bold text-slate-200">Python</h3>
                 </div>
-                <!-- C++ (New) -->
                 <div class="glass-panel p-6 rounded-lg text-center hover:bg-slate-800 transition-colors group">
                     <i class="fas fa-microchip text-4xl text-blue-600 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h3 class="font-bold text-slate-200">C++</h3>
@@ -296,7 +288,7 @@
             <!-- Grid Container -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                 
-                <!-- Project 1: SAE Web -->
+                <!-- TOP 1 : SAE Web -->
                 <div onclick="openModal('sae_web')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
                     <div class="h-48 bg-slate-800 relative overflow-hidden">
                         <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
@@ -306,46 +298,73 @@
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Projet SAE Web</h3>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Gestion de Groupes Étudiants</h3>
                             <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
                         </div>
                         <p class="text-slate-400 text-sm mb-4 flex-1">
-                            Développement d'un site web dynamique en PHP/MySQL (Projet IUT).
+                            Plateforme web de gestion et création de groupes d'étudiants, binômage et assignation de tuteurs référents.
                         </p>
                         <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
-                            <li>PHP</li>
+                            <li>PHP MVC</li>
                             <li>MySQL</li>
-                            <li>HTML/CSS</li>
+                            <li>Java</li>
+                            <li>Sécurité</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Project 2: SAE Java -->
+                <!-- TOP 2 : SAE Java -->
                 <div onclick="openModal('sae_java')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
                     <div class="h-48 bg-slate-800 relative overflow-hidden">
                         <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
-                         <div class="w-full h-full bg-gradient-to-br from-red-900 to-slate-800 flex items-center justify-center">
+                        <div class="w-full h-full bg-gradient-to-br from-red-900 to-slate-800 flex items-center justify-center">
                             <i class="fab fa-java text-5xl text-slate-400 group-hover:text-red-400 transition-colors"></i>
                         </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Projet SAE Java</h3>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Simulateur d'Admission CIUP</h3>
                             <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
                         </div>
                         <p class="text-slate-400 text-sm mb-4 flex-1">
-                            Développement d'une application logicielle en Java (Projet IUT).
+                            Application de modélisation de résidences universitaires avec calcul de quotas stricts de nationalités et tests unitaires.
                         </p>
                         <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
                             <li>Java</li>
                             <li>Swing</li>
-                            <li>Algo</li>
+                            <li>JUnit</li>
+                            <li>POO</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Project 3: SAE BDD -->
-                <div onclick="openModal('sae_bdd')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                <!-- TOP 3 : Tanktogether -->
+                <div onclick="openModal('tanktogether')" class="cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
+                    <div class="h-48 bg-slate-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-cyan-950 via-slate-800 to-slate-900 flex items-center justify-center">
+                            <i class="fas fa-gamepad text-5xl text-slate-400 group-hover:text-tech-accent transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Tanktogether</h3>
+                            <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 flex-1">
+                            Arène de chars multijoueur local : serveur de jeu PC sous Godot avec contrôle en temps réel via manettes Android dédiées.
+                        </p>
+                        <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
+                            <li>Godot</li>
+                            <li>Android</li>
+                            <li>Client/Serveur</li>
+                            <li>Réseau Local</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 4 : SAE BDD (Masqué initialement) -->
+                <div onclick="openModal('sae_bdd')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
                     <div class="h-48 bg-slate-800 relative overflow-hidden">
                         <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
                         <div class="w-full h-full bg-gradient-to-br from-slate-700 to-slate-600 flex items-center justify-center">
@@ -354,21 +373,21 @@
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Projet SAE BDD</h3>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">SAE Base de Données</h3>
                             <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
                         </div>
                         <p class="text-slate-400 text-sm mb-4 flex-1">
-                            Analyse et conception d'une base de données relationnelle.
+                            Analyse des besoins métier, modélisation conceptuelle (MCD/MLD Merise) et écriture de requêtes relationnelles SQL.
                         </p>
                         <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
                             <li>SQL</li>
                             <li>Merise</li>
-                            <li>UML</li>
+                            <li>Modélisation</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Project 4: Puissance 4 (Hidden initially) -->
+                <!-- Project 5 : Puissance 4 (Masqué initialement) -->
                 <div onclick="openModal('puissance4')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
                     <div class="h-48 bg-slate-800 relative overflow-hidden">
                         <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
@@ -382,17 +401,17 @@
                             <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
                         </div>
                         <p class="text-slate-400 text-sm mb-4 flex-1">
-                            Développement d’un jeu Puissance 4 en Python, avec gestion des règles et interface graphique.
+                            Jeu de plateau à 2 joueurs en local sur le même poste avec interface graphique dédiée et moteur de règles en Python.
                         </p>
                         <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
                             <li>Python</li>
                             <li>Tkinter</li>
-                            <li>Logique</li>
+                            <li>2 Joueurs Local</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Project 5: Jeu de la vie (Hidden initially) -->
+                <!-- Project 6 : Jeu de la vie (Masqué initialement) -->
                 <div onclick="openModal('jeu_vie')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
                     <div class="h-48 bg-slate-800 relative overflow-hidden">
                         <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
@@ -406,17 +425,17 @@
                             <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
                         </div>
                         <p class="text-slate-400 text-sm mb-4 flex-1">
-                            Développement du Jeu de la vie en Python, avec gestion des règles et interface graphique.
+                            Automate cellulaire avec grille toroïdale (bords bouclés), compteur de générations et édition dynamique des cellules.
                         </p>
                         <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
                             <li>Python</li>
                             <li>Simulation</li>
-                            <li>GUI</li>
+                            <li>Grille Toroïdale</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Project 6: Jeu vidéo Unity (Hidden initially) -->
+                <!-- Project 7 : Plateformer Programmable Unity (Masqué initialement) -->
                 <div onclick="openModal('unity_game')" class="hidden project-more cursor-pointer glass-panel rounded-xl overflow-hidden group hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col transform hover:-translate-y-2">
                     <div class="h-48 bg-slate-800 relative overflow-hidden">
                         <div class="absolute inset-0 bg-slate-900/50 group-hover:bg-transparent transition-all z-10"></div>
@@ -426,16 +445,16 @@
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Jeu vidéo Unity</h3>
+                            <h3 class="text-xl font-bold text-slate-100 group-hover:text-tech-accent transition-colors">Plateformer Programmable</h3>
                             <span class="text-xs font-mono text-tech-accent border border-tech-accent px-2 py-1 rounded">Détails ></span>
                         </div>
                         <p class="text-slate-400 text-sm mb-4 flex-1">
-                            Projet de création d’un jeu vidéo avec Unity, codage des actions personnalisées.
+                            Jeu de plateformes 2D où le joueur programme lui-même ses mécaniques de déplacement et de combat via un interpréteur Python.
                         </p>
                         <ul class="flex flex-wrap gap-2 font-mono text-xs text-tech-accent">
-                            <li>Unity</li>
+                            <li>Unity 2D</li>
                             <li>C#</li>
-                            <li>Game Dev</li>
+                            <li>Interpréteur Python</li>
                         </ul>
                     </div>
                 </div>
@@ -453,10 +472,8 @@
 
     <!-- Modal Container -->
     <div id="project-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <!-- Backdrop -->
         <div class="fixed inset-0 bg-slate-900 bg-opacity-90 transition-opacity" onclick="closeModal()"></div>
 
-        <!-- Modal Panel -->
         <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
             <div class="relative transform overflow-hidden rounded-lg bg-tech-card border border-slate-700 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
                 <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
@@ -465,12 +482,10 @@
                             <h3 class="text-2xl font-semibold leading-6 text-slate-100 mb-4 font-mono" id="modal-title">Titre du Projet</h3>
                             <div class="mt-2">
                                 <div class="text-sm text-slate-300 space-y-4" id="modal-content">
-                                    <!-- Dynamic Content injected here -->
                                 </div>
                                 <div class="mt-6 border-t border-slate-700 pt-4">
                                     <h4 class="text-sm font-bold text-tech-accent mb-2">Technologies utilisées :</h4>
                                     <div class="flex flex-wrap gap-2" id="modal-tags">
-                                        <!-- Tags injected here -->
                                     </div>
                                 </div>
                             </div>
@@ -512,16 +527,13 @@
             <button onclick="closeTerminal()" class="text-green-500 hover:text-white">[X] Fermer</button>
         </div>
         <div id="terminal-output" class="flex-1 overflow-y-auto mb-4 space-y-2">
-            <!-- Output will go here -->
         </div>
         
-        <!-- NEW INPUT STRUCTURE FOR CURSOR FOLLOWING -->
         <div class="flex items-center flex-wrap" onclick="document.getElementById('terminal-input').focus()">
             <span id="active-prompt" class="mr-2 text-green-400 shrink-0">user@portfolio:~$</span>
             <div class="relative flex items-center">
                 <span id="terminal-mirror" class="text-green-400 whitespace-pre"></span>
                 <span class="terminal-cursor"></span>
-                <!-- Hidden input, tiny size but captures focus and typing -->
                 <input type="text" id="terminal-input" class="absolute opacity-0 w-px h-px overflow-hidden" autocomplete="off" spellcheck="false">
             </div>
         </div>
@@ -532,58 +544,92 @@
         // Data for Projects
         const projectsData = {
             'sae_web': {
-                title: "SAE Web : Site Dynamique PHP",
+                title: "Gestion & Création de Groupes Étudiants",
                 description: `
-                    <p class="mb-2"><strong>(Copie ici le texte de ton projet Web depuis ton ancien portfolio)</strong></p>
-                    <p class="mb-2">Exemple : Création d'un site web de gestion avec PHP 8 et MySQL. Mise en place d'une architecture MVC, gestion des sessions utilisateurs et sécurité des formulaires.</p>
+                    <p class="mb-2">Plateforme web complète conçue pour l'organisation pédagogique : constitution de groupes d'étudiants, gestion du binômage et affectation d'enseignants référents.</p>
+                    <p class="mb-2">Architecture & Sécurité :</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li>Développement back-end selon le patron d'architecture <strong>MVC</strong> en PHP.</li>
+                        <li>Interopérabilité avec une application compagnon développée en <strong>Java</strong> pour le traitement complémentaire de données.</li>
+                        <li>Sécurisation des accès : hachage des mots de passe avec <code>password_hash()</code> et protection systématique contre les injections SQL par requêtes préparées (PDO).</li>
+                    </ul>
                 `,
-                tags: ["PHP", "MySQL", "HTML/CSS", "MVC"]
+                tags: ["PHP", "MVC", "MySQL", "Java", "Sécurité PDO", "Sessions"]
             },
             'sae_java': {
-                title: "SAE Java : Application Logicielle",
+                title: "Simulateur d'Admission CIUP (Cité Universitaire)",
                 description: `
-                    <p class="mb-2"><strong>(Copie ici le texte de ton projet Java)</strong></p>
-                    <p class="mb-2">Exemple : Développement d'une application de gestion de stock en Java. Utilisation de la programmation orientée objet (héritage, polymorphisme) et création d'une interface graphique avec Swing.</p>
+                    <p class="mb-2">Application logicielle en Java dédiée à la gestion d'admissions et à la répartition d'étudiants sur 5 résidences de la Cité Internationale Universitaire de Paris (CIUP) et 3 restaurants universitaires.</p>
+                    <p class="mb-2">Fonctionnalités & Conception :</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li><strong>Règles de quotas complexes :</strong> Implémentation d'algorithmes de filtrage par nationalité (par exemple : limitation à 70 % d'étudiants espagnols au sein du pavillon d'Espagne).</li>
+                        <li><strong>Génération dynamique :</strong> Données instanciées et structurées dynamiquement en mémoire vive au lancement de l'application.</li>
+                        <li><strong>Fiabilité :</strong> Écriture d'une suite de <strong>tests unitaires JUnit</strong> validant le respect strict des seuils et de la logique métier.</li>
+                    </ul>
                 `,
-                tags: ["Java", "Swing", "POO", "Algorithmique"]
+                tags: ["Java", "Swing", "Algorithmique", "JUnit", "Tests Unitaires", "POO"]
+            },
+            'tanktogether': {
+                title: "Tanktogether : Arène Multijoueur Local (SAE S4)",
+                description: `
+                    <p class="mb-2">Jeu vidéo d'arène multijoueur local développé sous <strong>Godot Engine</strong> dans le cadre de la SAE de semestre 4.</p>
+                    <p class="mb-2">Architecture Client/Serveur originale :</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li><strong>Serveur central (PC) :</strong> Fait tourner l'instance principale sous Godot, gère l'arène, la physique balistique des tirs, les collisions et le décompte des manches.</li>
+                        <li><strong>Contrôleurs mobiles (Android) :</strong> Application smartphone servant de manette sans fil communicant en temps réel sur le réseau local avec le PC.</li>
+                        <li>Synchronisation réseau fluide sans temps de latence perceptible pour les joueurs.</li>
+                    </ul>
+                `,
+                tags: ["Godot", "GDScript", "Android", "Client/Serveur", "Réseau Local", "SAE S4"]
             },
             'sae_bdd': {
-                title: "SAE Base de Données",
+                title: "Conception & Modélisation de Base de Données",
                 description: `
-                    <p class="mb-2"><strong>(Copie ici le texte de ton projet BDD ou autre)</strong></p>
-                    <p class="mb-2">Exemple : Analyse des besoins, création du modèle conceptuel de données (MCD) et implémentation SQL pour une entreprise fictive.</p>
+                    <p class="mb-2">Projet universitaire d'ingénierie des données centré sur la formalisation des besoins et la construction d'un schéma relationnel pérenne.</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li>Élaboration des modèles conceptuel et logique de données (MCD / MLD) selon la méthode <strong>Merise</strong>.</li>
+                        <li>Traduction en schémas relationnels normalisés et création des tables via des scripts DDL.</li>
+                        <li>Écriture de requêtes relationnelles SQL (jointures multiples, agrégations, sous-requêtes).</li>
+                    </ul>
                 `,
-                tags: ["SQL", "Merise", "Modélisation"]
+                tags: ["SQL", "Merise", "MCD/MLD", "Normalisation", "Bases Relationnelles"]
             },
             'puissance4': {
                 title: "Puissance 4 en Python",
                 description: `
-                    <p class="mb-2">Développement d’un jeu Puissance 4 complet en Python.</p>
-                    <p class="mb-2">Ce projet inclut la gestion complète des règles du jeu (vérification des alignements, gestion du tour par tour, détection de la victoire ou du match nul).</p>
-                    <p class="mb-2">Une interface graphique (GUI) a été développée pour permettre aux joueurs d'interagir facilement avec le jeu plutôt que de jouer via la console.</p>
-                `,
-                tags: ["Python", "Tkinter", "Logique de Jeu"]
-            },
-            'jeu_vie': {
-                title: "Jeu de la vie en Python",
-                description: `
-                    <p class="mb-2">Développement du célèbre automate cellulaire "Le Jeu de la vie" (Game of Life) de Conway en Python.</p>
-                    <p class="mb-2">Implémentation des règles d'évolution des cellules (naissance, survie, mort). Le projet comprend une interface graphique permettant de visualiser l'évolution de la population de cellules génération après génération.</p>
-                `,
-                tags: ["Python", "Simulation", "Algorithmique"]
-            },
-            'unity_game': {
-                title: "Jeu vidéo Unity",
-                description: `
-                    <p class="mb-2">Projet de création d’un jeu vidéo 2D/3D utilisant le moteur Unity.</p>
-                    <p class="mb-2">Programmation en C# des scripts comportementaux pour les actions personnalisées du personnage :</p>
+                    <p class="mb-2">Implémentation complète du jeu Puissance 4 développée en Python avec une interface graphique dédiée.</p>
                     <ul class="list-disc pl-5 mb-2 space-y-1">
-                        <li>Système de déplacement fluide.</li>
-                        <li>Mécanique de saut avec gestion de la physique.</li>
-                        <li>Fonctionnalité "Recommencer" pour gérer le Game Over.</li>
+                        <li><strong>Multijoueur local :</strong> Conçu pour des affrontements à 2 joueurs sur le même ordinateur au tour par tour.</li>
+                        <li><strong>Moteur de règles :</strong> Détection automatique des alignements de 4 pions (horizontaux, verticaux, diagonaux) et condition de match nul.</li>
+                        <li>Interface graphique interactive sous <strong>Tkinter</strong> réagissant aux colonnes sélectionnées.</li>
                     </ul>
                 `,
-                tags: ["Unity", "C#", "Game Design", "Physique"]
+                tags: ["Python", "Tkinter", "Logique de Jeu", "Matrice 2D", "Multijoueur Local"]
+            },
+            'jeu_vie': {
+                title: "Le Jeu de la Vie (Automate Cellulaire)",
+                description: `
+                    <p class="mb-2">Simulation interactive du célèbre automate cellulaire de John Conway développé en Python avec rendu graphique.</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li><strong>Grille toroïdale :</strong> Gestion d'un univers rebouclé sur lui-même (les cellules sortant à droite réapparaissent à gauche, de même pour le haut et le bas).</li>
+                        <li><strong>Contrôle complet de la simulation :</strong> Mise en pause à la volée, avance pas à pas et suivi précis du compteur de générations.</li>
+                        <li><strong>Édition dynamique :</strong> Possibilité pour l'utilisateur de cliquer sur la grille pour faire naître ou supprimer des cellules en direct.</li>
+                    </ul>
+                `,
+                tags: ["Python", "Simulation", "Algorithmique", "Grille Toroïdale", "Tkinter"]
+            },
+            'unity_game': {
+                title: "Plateformer Programmable (Unity & Python)",
+                description: `
+                    <p class="mb-2">Jeu de plateformes 2D sous Unity articulé autour d'une mécanique d'apprentissage originale : le joueur doit programmer ses propres mouvements pour franchir les niveaux.</p>
+                    <p class="mb-2">Système de jeu & Interpréteur :</p>
+                    <ul class="list-disc pl-5 mb-2 space-y-1">
+                        <li><strong>Interpréteur Python intégré :</strong> Le code tapé par le joueur est directement interprété en direct pour ordonner les actions du héros.</li>
+                        <li><strong>Progression didactique par niveau :</strong> Niveau 1 guidé (coder le déplacement continu à droite), Niveau 2 avec obstacle cyclique (scie mobile imposant de coder l'input pour attendre avant d'avancer).</li>
+                        <li><strong>Extension du panel d'actions :</strong> Niveaux suivants débloquant l'implémentation de la marche arrière, du saut, de la fonction de réinitialisation en cas de blocage et de l'élimination des ennemis au contact.</li>
+                    </ul>
+                `,
+                tags: ["Unity", "C#", "Interpréteur Python", "Game Design 2D", "Gameplay Didactique"]
             }
         };
 
@@ -628,8 +674,6 @@
         }
 
         // --- TERMINAL EASTER EGG LOGIC ---
-        
-        // File System Simulation
         const fileSystem = {
             '~': {
                 type: 'dir',
@@ -639,9 +683,9 @@
                     'competences': {
                         type: 'dir',
                         children: {
-                            'java.txt': { type: 'file', content: "Maitrise : Avancé\n- POO, Swing, Algorithmique" },
-                            'php.txt': { type: 'file', content: "Maitrise : Intermédiaire\n- Web Dynamique, MVC, MySQL" },
-                            'python.txt': { type: 'file', content: "Maitrise : Intermédiaire\n- Scripts, Tkinter, Data" },
+                            'java.txt': { type: 'file', content: "Maitrise : Avancé\n- POO, Swing, Algorithmique, Tests JUnit" },
+                            'php.txt': { type: 'file', content: "Maitrise : Intermédiaire\n- Web Dynamique, MVC, PDO, Sécurité" },
+                            'python.txt': { type: 'file', content: "Maitrise : Intermédiaire\n- Scripts, Tkinter, Interpréteurs" },
                             'cpp.txt': { type: 'file', content: "Maitrise : Débutant/Intermédiaire\n- Programmation système" },
                             'linux.txt': { type: 'file', content: "Environnement : Bash, Scripting" }
                         }
@@ -649,11 +693,13 @@
                     'projets': {
                         type: 'dir',
                         children: {
-                            'sae_web.txt': { type: 'file', content: "Site Web Dynamique en PHP/MySQL." },
-                            'sae_java.txt': { type: 'file', content: "Application Logicielle en Java." },
-                            'puissance4.txt': { type: 'file', content: "Jeu Puissance 4 en Python avec GUI." },
-                            'jeu_vie.txt': { type: 'file', content: "Simulation Jeu de la Vie en Python." },
-                            'unity.txt': { type: 'file', content: "Jeu vidéo développé sous Unity (C#)." }
+                            'sae_web.txt': { type: 'file', content: "Gestion Groupes Étudiants :\nArchitecture PHP MVC, liaisons avec app Java, sécurisation PDO/password_hash." },
+                            'sae_java.txt': { type: 'file', content: "Simulateur CIUP :\nRépartition d'étudiants (5 maisons, 3 restoU) avec gestion de quotas et tests JUnit." },
+                            'tanktogether.txt': { type: 'file', content: "Tanktogether (SAE S4) :\nJeu d'arène multijoueur local.\nServeur PC sous Godot avec manettes smartphones Android en réseau local." },
+                            'sae_bdd.txt': { type: 'file', content: "SAE BDD :\nConception Merise (MCD/MLD) et modélisation relationnelle SQL." },
+                            'puissance4.txt': { type: 'file', content: "Puissance 4 :\nJeu à 2 joueurs en local sur un seul poste avec interface Tkinter." },
+                            'jeu_vie.txt': { type: 'file', content: "Jeu de la Vie :\nAutomate cellulaire avec grille toroïdale, pause et édition dynamique de cellules." },
+                            'unity.txt': { type: 'file', content: "Plateformer Programmable :\nJeu de plateformes Unity 2D avec interpréteur Python où le joueur code ses mouvements." }
                         }
                     }
                 }
@@ -670,14 +716,12 @@
             const input = document.getElementById('terminal-input');
             const output = document.getElementById('terminal-output');
             
-            // Clear previous session content
             output.innerHTML = "";
 
             term.classList.remove('hidden');
             term.classList.add('flex');
             input.focus();
             
-            // Always show welcome message on open
             print("Bienvenue dans le terminal du portfolio");
             print("faire help pour connaitre les fonctionnalites");
             print("---------------------------------------------------------");
@@ -790,12 +834,10 @@
             }
         }
 
-        // Helper to resolve complex paths (../, ~/, ./, etc.)
         function resolvePath(pathStr) {
             let startStack = [...currentPath];
             let parts = pathStr.split('/');
             
-            // Handle root start
             if (pathStr.startsWith('~/')) {
                 startStack = ['~'];
                 parts = pathStr.slice(2).split('/');
@@ -817,15 +859,13 @@
                 }
             }
 
-            // Traverse
             let curr = fileSystem['~'];
-            // i starts at 1 because index 0 is '~' which we already have in curr
             for (let i = 1; i < tempStack.length; i++) {
                 const component = tempStack[i];
                 if (curr.children && curr.children[component]) {
                     curr = curr.children[component];
                 } else {
-                    return null; // Not found
+                    return null;
                 }
             }
             
@@ -848,9 +888,6 @@
                     break;
                 
                 case 'ls':
-                    // We need to list content of current directory or arg directory if provided
-                    // For now simplicity: ls only current directory
-                    // If user provides arg "ls projects/", we could implement that, but keeping it simple as per request context
                     let targetNodeForLs = currentDir;
                     if (arg) {
                         const res = resolvePath(arg);
@@ -867,7 +904,6 @@
 
                 case 'cd':
                     if (!arg) {
-                        // Reset to root
                         currentDir = fileSystem['~'];
                         currentPath = ['~'];
                         updatePrompt();
@@ -918,7 +954,6 @@
             }
         }
 
-        // Standard Close on Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeModal();
@@ -926,7 +961,7 @@
             }
         });
 
-        // Smooth reveal on scroll (Existing Logic)
+        // Smooth reveal on scroll
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
